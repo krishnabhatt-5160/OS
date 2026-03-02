@@ -1,0 +1,42 @@
+# Rubik's Cube Solver UI Prompts
+
+This guide contains the specific prompts required to generate the two distinct states of the 3D Rubik's Cube Solver web application.
+
+---
+
+## 1. Initial State Prompt
+**Use this prompt to build the landing page and the "Solved" starting view.**
+
+> **Task:** Create the initial UI for a 3D Rubik's Cube Solver web application.
+> 
+> **Visual Theme:** A high-tech, dark-themed interface with a deep charcoal or navy blue background.
+> 
+> **Layout & Components:**
+> * **3D Viewport:** A large central area featuring a standard 3x3 Rubik's Cube. The cube must be in its **fully solved state** (solid colors on each face). It should be rendered with a subtle glow and professional lighting.
+> * **The Sidebar (Left):** A dedicated "Solving Stats" sidebar. In this initial state, it should display:
+>     * **Move Counter:** Showing "0 moves."
+>     * **Move History:** An empty list or placeholder text saying "Scramble the cube to begin."
+> * **The Controls (Center Bottom):** Two prominent, styled buttons placed horizontally:
+>     1. **SCRAMBLE:** Clicking this initiates a 3D animation of the cube being mixed up randomly.
+>     2. **SOLVE:** This button should be visually disabled (low opacity) until the cube has been scrambled.
+> * **Constraint:** No navigation arrows or step-by-step controls should be visible yet. The bottom of the page must be clean and free of any text blocks, grids, or seek bars.
+
+---
+
+## 2. Solve Mode Prompt
+**Use this prompt to build the UI state triggered after clicking the "Solve" button.**
+
+> **Task:** Create the "Step-by-Step Solve" interface for the 3D Rubik's Cube application.
+> 
+> **UI Transformation:**
+> * **Remove Main Buttons:** The "Scramble" and original "Solve" buttons must be removed from the screen entirely.
+> * **The Sidebar (Updated):** >     * **Move History:** The sidebar now displays a vertical, numbered list of the Singmaster notation moves (e.g., R, U', L2) required to solve the current scramble. 
+>     * **Active Move:** The current step in the sequence should be visually highlighted (e.g., a blue glow or bold text).
+>     * **Exit Button:** A "Back to Scramble State" button is added to the bottom of the sidebar to let the user exit the solver and return to the scrambled view.
+> * **Step Controls (Center Bottom):** Below the 3D cube, display **only two buttons**:
+>     1. **Backward Arrow:** Animates the reversal of the last move made.
+>     2. **Forward Arrow:** Animates the execution of the next move in the solving sequence.
+> * **Logic & Functionality:**
+>     * **Animation Lock:** While the cube is rotating, both the Forward and Backward buttons must be disabled to prevent overlapping animations. They only become clickable again once the rotation is complete.
+>     * **Move Counter:** The sidebar counter must update in real-time (e.g., "Step 4 of 20").
+> * **Constraint:** Ensure there are no play/pause buttons, no seek bars, and no additional text instructions at the bottom of the screen. The bottom area must remain empty except for the two navigation arrows.
