@@ -4,67 +4,64 @@ A full-stack TypeScript application featuring a 3D Rubik's Cube solver. Built wi
 
 ## 🚀 Getting Started
 
-Follow these steps to run the project locally on your machine.
+Follow these exact steps to set up the project on your local machine.
 
 ### 1. Prerequisites
-* **Node.js**: Version 20.x or higher (Tested on v24)
-* **PostgreSQL**: A running instance (or a [Neon.tech](https://neon.tech) connection string)
-* **npm**: Installed with Node.js
+* **Node.js**: v20.x or higher (Tested on v24)
+* **npm**: Comes with Node.js
+* **A Neon Account**: Sign up for free at [Neon.tech](https://neon.tech)
 
 ### 2. Installation
-Clone the repository and install the dependencies:
+Clone this repository and install the required dependencies:
 ```bash
 npm install
-````
+3. Database Setup (via Neon.tech)
+This project requires a PostgreSQL database to store app data.
 
-### 3\. Environment Setup
+Log in to Neon.tech and create a new project (e.g., "RubiksCube").
 
-Create a `.env` file in the root directory and add your database connection string:
+On your Project Dashboard, look for the Connection String section.
 
-```env
-DATABASE_URL=postgresql://user:password@host:port/dbname?sslmode=require
+Select Node.js from the dropdown and click the eye icon to show your password.
+
+Copy the entire string (it starts with postgresql://).
+
+4. Environment Configuration
+In the root of this project, create a file named .env.
+
+Paste your connection string into the file exactly like this:
+
+Code snippet
+DATABASE_URL=paste_your_neon_connection_string_here
 PORT=5001
-```
+(Note: We use port 5001 to avoid conflicts with macOS AirPlay services on port 5000).
 
-*Note: We use port **5001** by default to avoid conflicts with macOS AirPlay services.*
+5. Initialize the Database
+Before running the app, you must create the necessary tables in your Neon database:
 
-### 4\. Database Initialization
-
-Push the database schema to your PostgreSQL instance using Drizzle:
-
-```bash
+Bash
 npm run db:push
-```
+You should see a "Changes applied" message in your terminal.
 
-### 5\. Running the App
+6. Run the Application
+Start the development server:
 
-Start the development server (runs both backend and frontend):
-
-```bash
+Bash
 npm run dev
-```
+Once started, open your browser to: http://localhost:5001
 
-The application will be available at [http://localhost:5001](https://www.google.com/search?q=http://localhost:5001).
+🛠 Tech Stack
+Frontend: React, Vite, TailwindCSS, Framer Motion
 
------
+3D Engine: Three.js (@react-three/fiber & @react-three/drei)
 
-## 🛠 Tech Stack
+Backend: Express.js (Node.js)
 
-  * **Frontend**: React, Vite, TailwindCSS, Framer Motion
-  * **3D Rendering**: Three.js, @react-three/fiber
-  * **Backend**: Express.js (Node.js)
-  * **Database**: PostgreSQL with Drizzle ORM
-  * **Validation**: Zod
+ORM: Drizzle ORM (PostgreSQL)
 
-## 📂 Project Structure
+📂 Project Structure
+/client - React frontend and 3D cube logic
 
-  * `/client` - React frontend and 3D components
-  * `/server` - Express API and database configuration
-  * `/shared` - Shared TypeScript types and Zod schemas
+/server - Express API, Authentication, and DB connection
 
-<!-- end list -->
-
-```
-
----
-
+/shared - TypeScript schemas used by both client and server
